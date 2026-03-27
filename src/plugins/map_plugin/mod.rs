@@ -1,7 +1,18 @@
+pub mod terrain;
+
+use bevy::prelude::*;
+use terrain::{Terrain, TerrainMaterial};
+
 pub struct MapPlugin;
 
-impl bevy::app::Plugin for MapPlugin {
-    fn build(&self, app: &mut bevy::prelude::App) {
-        // Add systems and resources for the Map plugin here
+impl Plugin for MapPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_startup_system(setup_terrain);
     }
+}
+
+fn setup_terrain(mut commands: Commands) {
+    commands.spawn().insert(Terrain {
+        material: TerrainMaterial::Rock,
+    });
 }
