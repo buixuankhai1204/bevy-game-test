@@ -1,7 +1,12 @@
+pub mod projectile;
+
+use bevy::prelude::*;
+use projectile::{Projectile, update_projectile};
+
 pub struct PhysicsPlugin;
 
-impl bevy::app::Plugin for PhysicsPlugin {
-    fn build(&self, app: &mut bevy::prelude::App) {
-        // Add systems and resources for the Physics plugin here
+impl Plugin for PhysicsPlugin {
+    fn build(&self, app: &mut App) {
+        app.add_system(update_projectile);
     }
 }
