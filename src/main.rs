@@ -26,9 +26,9 @@ enum GameState {
 }
 
 fn main() {
-    App::build()
+    App::new()
         .add_plugins(DefaultPlugins)
-        .add_state(GameState::Menu)
+        .insert_resource(State::new(GameState::Menu))
         .add_plugin(MapPlugin)
         .add_plugin(PlayerPlugin)
         .add_plugin(PhysicsPlugin)
